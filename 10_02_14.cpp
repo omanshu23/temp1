@@ -14,6 +14,20 @@ class node{
     }
 };
 
+node* reverseRecursive(node* &head)
+{
+    if(head == NULL || head->next == NULL)
+    {
+        return head;
+    }
+
+    node* newhead = reverse_iterator(head->next);
+    head->next->next = head;
+    head->next = NULL;
+
+    return newhead;
+}
+
 void deleteAtHead(node* &head)
 {
     node* todelete = head;
@@ -138,6 +152,9 @@ int main()
     cout<<endl;
     node* newhead = reverse(head);
     display(head);
+    cout<<endl;
+    node* newhead = reverseRecursive(head);
+    display(newhead);
 
     return 0;
 }
